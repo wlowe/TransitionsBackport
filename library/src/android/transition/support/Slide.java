@@ -16,13 +16,15 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.TimeInterpolator;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.view.animation.Interpolator;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 /**
  * This transition captures the visibility of target objects before and
@@ -35,8 +37,8 @@ public class Slide extends Visibility {
 
     // TODO: Add parameter for sliding factor - it's hard-coded below
 
-    private static final TimeInterpolator sAccelerator = new AccelerateInterpolator();
-    private static final TimeInterpolator sDecelerator = new DecelerateInterpolator();
+    private static final Interpolator sAccelerator = new AccelerateInterpolator();
+    private static final Interpolator sDecelerator = new DecelerateInterpolator();
 
     @Override
     public Animator onAppear(ViewGroup sceneRoot,
@@ -44,7 +46,7 @@ public class Slide extends Visibility {
             TransitionValues endValues, int endVisibility) {
         View endView = (endValues != null) ? endValues.view : null;
         endView.setTranslationY(-2 * endView.getHeight());
-        ObjectAnimator anim = ObjectAnimator.ofFloat(endView, View.TRANSLATION_Y,
+        ObjectAnimator anim = ObjectAnimator.ofFloat(endView, "translationY",
                 -2 * endView.getHeight(), 0);
         anim.setInterpolator(sDecelerator);
         return anim;
@@ -56,7 +58,7 @@ public class Slide extends Visibility {
             TransitionValues endValues, int endVisibility) {
         View startView = (startValues != null) ? startValues.view : null;
         startView.setTranslationY(0);
-        ObjectAnimator anim = ObjectAnimator.ofFloat(startView, View.TRANSLATION_Y, 0,
+        ObjectAnimator anim = ObjectAnimator.ofFloat(startView, "translationY", 0,
                 -2 * startView.getHeight());
         anim.setInterpolator(sAccelerator);
         return anim;

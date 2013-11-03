@@ -16,9 +16,10 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nineoldandroids.animation.Animator;
 
 /**
  * This transition tracks changes to the visibility of target views in the

@@ -15,8 +15,9 @@
  */
 package android.transition.support.utils;
 
-import android.animation.TypeEvaluator;
 import android.graphics.Rect;
+
+import com.nineoldandroids.animation.TypeEvaluator;
 
 /**
  * This evaluator can be used to perform type interpolation between <code>Rect</code> values.

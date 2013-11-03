@@ -16,12 +16,12 @@
 
 package android.transition.support;
 
-import android.animation.TimeInterpolator;
+import java.util.ArrayList;
+
 import android.util.AndroidRuntimeException;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.ArrayList;
+import android.view.animation.Interpolator;
 
 /**
  * A TransitionSet is a parent of child transitions (including other
@@ -161,7 +161,7 @@ public class TransitionSet extends android.transition.support.Transition {
     }
 
     @Override
-    public TransitionSet setInterpolator(TimeInterpolator interpolator) {
+    public TransitionSet setInterpolator(Interpolator interpolator) {
         return (TransitionSet) super.setInterpolator(interpolator);
     }
 

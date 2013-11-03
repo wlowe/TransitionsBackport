@@ -16,11 +16,10 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
+
+import java.util.Map;
+
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -33,7 +32,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewOverlay;
 
-import java.util.Map;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * This transition captures bitmap representations of target views before and
@@ -163,7 +166,8 @@ public class Crossfade extends Transition {
         return mResizeBehavior;
     }
 
-    @Override
+    @SuppressLint("NewApi")
+	@Override
     public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues,
                                    TransitionValues endValues) {
         if (startValues == null || endValues == null) {
@@ -219,9 +223,9 @@ public class Crossfade extends Transition {
             ObjectAnimator anim1 = null;
             if (mFadeBehavior == FADE_BEHAVIOR_OUT_IN) {
                 // start fading in halfway through the transition
-                anim1 = ObjectAnimator.ofFloat(view, View.ALPHA, 0, 0, 1);
+                anim1 = ObjectAnimator.ofFloat(view, "alpha", 0, 0, 1);
             } else if (mFadeBehavior == FADE_BEHAVIOR_CROSSFADE) {
-                anim1 = ObjectAnimator.ofFloat(view, View.ALPHA, 0, 1);
+                anim1 = ObjectAnimator.ofFloat(view, "alpha", 0, 1);
             }
             if (Transition.DBG) {
                 Log.d(LOG_TAG, "Crossfade: created anim " + anim + " for start, end values " +

@@ -16,10 +16,11 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 /**
  * This transition captures the rotation property of targets before and after
@@ -52,7 +53,7 @@ public class Rotate extends Transition {
         float endRotation = (Float) endValues.values.get(PROPNAME_ROTATION);
         if (startRotation != endRotation) {
             view.setRotation(startRotation);
-            return ObjectAnimator.ofFloat(view, View.ROTATION,
+            return ObjectAnimator.ofFloat(view, "rotation",
                     startRotation, endRotation);
         }
         return null;

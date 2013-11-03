@@ -16,10 +16,9 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
+import java.util.Map;
+
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -29,7 +28,10 @@ import android.transition.support.utils.RectEvaluator;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.Map;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.PropertyValuesHolder;
 
 /**
  * This transition captures the layout bounds of target views before and after
@@ -102,7 +104,8 @@ public class ChangeBounds extends Transition {
         captureValues(transitionValues);
     }
 
-    @Override
+    @SuppressLint("NewApi")
+	@Override
     public Animator createAnimator(final ViewGroup sceneRoot, TransitionValues startValues,
                                    TransitionValues endValues) {
         if (startValues == null || endValues == null) {
@@ -266,7 +269,8 @@ public class ChangeBounds extends Transition {
 //                        addListener(transitionListener);
                     }
                     anim.addListener(new AnimatorListenerAdapter() {
-                        @Override
+                        @SuppressLint("NewApi")
+						@Override
                         public void onAnimationEnd(Animator animation) {
                             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
                             {

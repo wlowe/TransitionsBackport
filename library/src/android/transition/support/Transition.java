@@ -16,9 +16,10 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.TimeInterpolator;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import android.support.v4.util.LongSparseArray;
 import android.support.v4.view.ViewCompat;
 import android.transition.support.utils.ArrayMap;
@@ -26,10 +27,11 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 import android.widget.ListView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
 
 /**
  * A Transition holds information about animations that will be run on its
@@ -95,7 +97,7 @@ public abstract class Transition implements Cloneable {
 
     long mStartDelay = -1;
     long mDuration = -1;
-    TimeInterpolator mInterpolator = null;
+    Interpolator mInterpolator = null;
     ArrayList<Integer> mTargetIds = new ArrayList<Integer>();
     ArrayList<View> mTargets = new ArrayList<View>();
     ArrayList<Integer> mTargetIdExcludes = null;
@@ -217,7 +219,7 @@ public abstract class Transition implements Cloneable {
      * @return This transition object.
      * @attr ref android.R.styleable#Transition_interpolator
      */
-    public Transition setInterpolator(TimeInterpolator interpolator) {
+    public Transition setInterpolator(Interpolator interpolator) {
         mInterpolator = interpolator;
         return this;
     }
@@ -230,7 +232,7 @@ public abstract class Transition implements Cloneable {
      * @return The interpolator set on this transition, if one has been set, otherwise
      * returns null.
      */
-    public TimeInterpolator getInterpolator() {
+    public Interpolator getInterpolator() {
         return mInterpolator;
     }
 

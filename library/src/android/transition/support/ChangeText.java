@@ -16,17 +16,19 @@
 
 package android.transition.support;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
+
+import java.util.Map;
+
 import android.graphics.Color;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.Map;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ValueAnimator;
 
 /**
  * This transition tracks changes to the text in TextView targets. If the text
